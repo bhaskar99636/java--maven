@@ -16,13 +16,6 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		sonarqube {
-                properties {
-                property "sonar.host.url", http://20.193.128.173:9000 //
-                property "sonar.projectName", "sample"   
-                property "sonar.projectKey", "sample"
-                 }
-          }
 	</properties>
 
 	<dependencies>
