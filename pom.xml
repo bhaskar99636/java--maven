@@ -21,7 +21,7 @@
                 property "sonar.host.url", http://20.193.128.173:9000 //
                 property "sonar.projectName", "sample"   
                 property "sonar.projectKey", "sample"
-                property "sonar.groovy.jacoco.reportPath", "${project.buildDir}/jacoco/test.exec"    }
+                 }
           }
 	</properties>
 
