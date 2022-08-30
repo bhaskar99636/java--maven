@@ -21,6 +21,12 @@ pipeline{
                 }
             }
          }
+         stage("Roll Back"){
+          when{
+            expression {
+                hudson.model.Result.SUCCESS.equals(currentBuild.rawBuild.getPreviousBuild()?.getResult()) == true
+            }
+          }
         }
     post{
         always{
