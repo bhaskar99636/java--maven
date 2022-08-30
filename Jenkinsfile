@@ -1,6 +1,13 @@
 pipeline{
     agent any
     stages{
+        stage("init") {
+            steps {
+                script {
+                    gv = load "pipeline_config.groovy"
+                }
+            }
+        }
         stage("Sonarqube analysis"){
             steps{
                 script{
