@@ -1,4 +1,5 @@
 @Library('java-maven') _
+
 def gv
 
 pipeline{
@@ -6,7 +7,6 @@ pipeline{
     stages{
         stage("Sonarqube analysis"){
             steps{
-                script{
                 withSonarQubeEnv(credentialsId: 'mysorarqube') {
                      sh 'mvn sonar:sonar' 
                   }
@@ -22,7 +22,6 @@ pipeline{
             }
          }
         }
-    }
     post{
         always{
             echo "========always========"
