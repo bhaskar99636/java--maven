@@ -15,7 +15,7 @@ pipeline{
         stage("Build jar") {
             steps {
                 script {
-                    gv = load "config.groovy"
+                    gv = load "pipeline_config.groovy"
                     echo "building jar"
                     gv.buildJar()
                 }
@@ -24,7 +24,7 @@ pipeline{
          stage("Roll Back"){
              steps {
                  script {
-                     gv = load "config.groovy"
+                     gv = load "pipeline_config.groovy"
                when{
                 expression {
                   gv.rollback()
