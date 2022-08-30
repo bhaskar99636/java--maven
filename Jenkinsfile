@@ -15,7 +15,7 @@ pipeline{
         stage("Build jar") {
             steps {
                 script {
-                    gv = load "pipeline_config.groovy"
+                    gv = load "config.groovy"
                     echo "building jar"
                     gv.buildJar()
                 }
@@ -23,11 +23,14 @@ pipeline{
          }
          stage("Roll Back"){
              steps {
+                 script {
+                     gv = load "config.groovy"
                when{
                 expression {
-                  hudson.model.Result.SUCCESS.equals(currentBuild.rawBuild.getPreviousBuild()?.getResult()) == true
+                  gv.rollback()
                 }
               }
+             }
           }
         }
      stage ("post build action"){ 
