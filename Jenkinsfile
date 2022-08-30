@@ -34,7 +34,8 @@ pipeline{
           }
         }
      stage ("post build action"){ 
-     post{
+       steps {
+        post{
         always{
             echo "========always========"
         }
@@ -46,5 +47,6 @@ pipeline{
         }
     }
   }
-}
+ }
+ }
 }
