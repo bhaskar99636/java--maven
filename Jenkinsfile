@@ -9,6 +9,14 @@ pipeline{
                   }
                 }
             }
+        stage("Build jar") {
+            steps {
+                script {
+                    echo "building jar"
+                    gv.buildJar()
+                }
+            }
+         }
         }
     }
     post{
