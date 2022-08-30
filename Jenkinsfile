@@ -1,15 +1,6 @@
 pipeline{
     agent any
     stages{
-        stage ('cleanWs & checkout scm') {
-          steps {
-            script {
-               deleteDir()
-               cleanWs()
-               checkout scm
-          }
-        }
-      }
         stage("Sonarqube analysis"){
             steps{
                 script{
