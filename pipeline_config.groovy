@@ -1,8 +1,12 @@
 def buildJar() {
     echo "building the application..."
     sh 'mvn package'
-} 
+}
 
+def rollback() {
+    echo "roll back to previous version"
+    hudson.model.Result.SUCCESS.equals(currentBuild.rawBuild.getPreviousBuild()?.getResult()) == true
+}
 def buildImage() {
     echo "building the docker image..."
     withCredentials([usernamePassword(credentialsId: 'ACR', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
