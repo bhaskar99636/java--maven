@@ -27,12 +27,12 @@ pipeline{
          stage("Roll Back"){
              steps {
                  script {
-                     gv = load "pipeline_config.groovy"
-               when{
-                expression {
-                  gv.rollback()
-                }
-              }
+                              if (currentBuild?.getPreviousBuild()?.result == 'FAILURE') {
+  if (currentBuild.resultIsBetterOrEqualTo(
+  currentBuild.getPreviousBuild().result)) {
+    echo 'build has been fixed
+  }
+}
              }
           }
         }
