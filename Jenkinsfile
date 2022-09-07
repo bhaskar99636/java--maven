@@ -36,8 +36,7 @@ pipeline{
              }
           }
         }
-     stage ("post build action"){ 
-       steps {
+  
         post{
         always{
             echo "========always========"
@@ -49,7 +48,6 @@ pipeline{
             echo "========pipeline execution failed========"
         }
     }
-  }
- }
+ 
  }
 }
