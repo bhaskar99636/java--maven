@@ -36,7 +36,7 @@ pipeline{
              }
           }
         }
-  
+    }
         post{
         always{
             echo "========always========"
@@ -49,5 +49,5 @@ pipeline{
         }
     }
  
- }
+ 
 }
