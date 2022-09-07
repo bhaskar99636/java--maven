@@ -25,14 +25,18 @@ pipeline{
             }
          }
          stage("Roll Back"){
-             steps {
-                 script {
-                     gv = load "pipeline_config.groovy"
-               when{
+              when{
                 expression {
-                  gv.rollback()
+                    currentBuild.result = 'FAILURE'
+                  //gv.rollback()
+                    !("SUCCESS".equals(currentBuild.previousBuild.result))
                 }
               }
+             steps {
+                 script {
+                   gv = load "pipeline_config.groovy"
+                    echo "building jar"
+                    gv.buildJar()
              }
           }
         }
