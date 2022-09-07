@@ -5,7 +5,6 @@ def gv
 pipeline{
     agent any
     tools {
-        maven "MAVEN"
         jdk "JDK"
     }
     stages{
