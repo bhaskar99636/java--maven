@@ -25,15 +25,16 @@ pipeline{
             }
          }
          stage("Roll Back"){
-              when{
-                expression {
-                  //gv.rollback()
-                   !hudson.model.Result.SUCCESS.equals(currentBuild.rawBuild.getPreviousBuild()?.getResult())
-                }
-              }
+             
              steps {
                  script {
-                   sh 'roollback'
+                     if (currentBuild?.getPreviousBuild()?.result == 'FAILURE') {
+  if (currentBuild.resultIsBetterOrEqualTo(
+  currentBuild.getPreviousBuild().result)) {
+    echo 'build has been fixed
+  }
+}
+                   //sh 'roollback'
              }
           }
         }
