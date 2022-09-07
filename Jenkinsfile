@@ -27,16 +27,13 @@ pipeline{
          stage("Roll Back"){
               when{
                 expression {
-                    currentBuild.result = 'FAILURE'
                   //gv.rollback()
-                    !("SUCCESS".equals(currentBuild.previousBuild.result))
+                   !hudson.model.Result.SUCCESS.equals(currentBuild.rawBuild.getPreviousBuild()?.getResult())
                 }
               }
              steps {
                  script {
-                   gv = load "pipeline_config.groovy"
-                    echo "building jar"
-                    gv.buildJar()
+                   sh 'roollback'
              }
           }
         }
