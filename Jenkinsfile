@@ -30,7 +30,7 @@ pipeline{
                               if (currentBuild?.getPreviousBuild()?.result == 'FAILURE') {
   if (currentBuild.resultIsBetterOrEqualTo(
   currentBuild.getPreviousBuild().result)) {
-    echo 'build has been fixed
+    echo 'build has been fixed'
   }
 }
              }
