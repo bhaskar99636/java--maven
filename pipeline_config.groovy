@@ -3,6 +3,12 @@ def buildJar() {
     sh 'mvn package'
 }
 
+def qualityanalysis() {
+    withSonarQubeEnv(credentialsId: 'mysorarqube', installationName: 'sample_java') {
+                     sh 'mvn sonar:sonar' 
+                  }
+         }
+
 def rollback() {
     echo "roll back to previous version"
     if (currentBuild?.getPreviousBuild()?.result == 'FAILURE') {
