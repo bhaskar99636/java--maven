@@ -10,9 +10,7 @@ pipeline{
     stages{
         stage("Sonarqube analysis"){
             steps{
-                withSonarQubeEnv(credentialsId: 'mysorarqube', installationName: 'sample_java') {
-                     sh 'mvn sonar:sonar' 
-                  }
+                gv.qualityanalysis() 
                 }
             }
         stage("Build jar") {
