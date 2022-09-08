@@ -27,12 +27,8 @@ pipeline{
          stage("Roll Back"){
              steps {
                  script {
-                              if (currentBuild?.getPreviousBuild()?.result == 'FAILURE') {
-  if (currentBuild.resultIsBetterOrEqualTo(
-  currentBuild.getPreviousBuild().result)) {
-    echo 'build has been fixed'
-  }
-}
+                   echo "roll back to previous version"
+                   gv.rollback()
              }
           }
         }
