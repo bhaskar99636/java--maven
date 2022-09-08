@@ -10,7 +10,10 @@ pipeline{
     stages{
         stage("Sonarqube analysis"){
             steps{
-                gv.qualityanalysis() 
+                script {
+                    echo "sonarQube code quality check"
+                    gv.qualityanalysis() 
+                  }
                 }
             }
         stage("Build jar") {
