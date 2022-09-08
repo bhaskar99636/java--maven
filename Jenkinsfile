@@ -11,6 +11,7 @@ pipeline{
         stage("Sonarqube analysis"){
             steps{
                 script {
+                    gv = load "pipeline_config.groovy"
                     echo "sonarQube code quality check"
                     gv.qualityanalysis() 
                   }
@@ -19,7 +20,6 @@ pipeline{
         stage("Build jar") {
             steps {
                 script {
-                    gv = load "pipeline_config.groovy"
                     echo "building jar"
                     gv.buildJar()
                 }
