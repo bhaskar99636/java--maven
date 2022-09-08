@@ -5,7 +5,12 @@ def buildJar() {
 
 def rollback() {
     echo "roll back to previous version"
-    hudson.model.Result.SUCCESS.equals(currentBuild.rawBuild.getPreviousBuild()?.getResult()) == true
+    if (currentBuild?.getPreviousBuild()?.result == 'FAILURE') {
+    if (currentBuild.resultIsBetterOrEqualTo(
+    currentBuild.getPreviousBuild().result)) {
+    echo 'build has been fixed'
+   }
+  }
 }
 def buildImage() {
     echo "building the docker image..."
