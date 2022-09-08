@@ -4,6 +4,7 @@ def buildJar() {
 }
 
 def qualityanalysis() {
+    echo "sonarQube code quality check"
     withSonarQubeEnv(credentialsId: 'mysorarqube', installationName: 'sample_java') {
                      sh 'mvn sonar:sonar' 
                   }
