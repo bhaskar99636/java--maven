@@ -12,6 +12,16 @@ def rollback() {
    }
   }
 }
+def tag version() {
+    void gitTag(Version releaseVersion) {
+      sshagent(['devops_deploy_DEV']) {
+        shell 'git tag -d \$(git tag)'
+        shell 'git fetch --tags'
+        echo "New release version ${releaseVersion.normalVersion}"
+        shell "git tag -fa ${releaseVersion.normalVersion} -m 'Release version ${releaseVersion.normalVersion}'"
+      }
+    }
+   }
 def buildImage() {
     echo "building the docker image..."
     withCredentials([usernamePassword(credentialsId: 'ACR', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
