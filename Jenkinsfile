@@ -8,6 +8,13 @@ pipeline{
         jdk "JDK"
     }
     stages{
+        stage('SCM Checkout') {
+            steps {
+                git branch: '',
+                credentialsId: '',
+                url: 'https://github.com/bhaskar99636/java--maven.git'
+            }
+        }
         stage("Sonarqube analysis"){
             steps{
                 script {
