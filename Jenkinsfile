@@ -28,14 +28,6 @@ pipeline{
                 }
             }
          }
-         stage("releaseVersion"){
-             steps {
-                 script {
-                   echo "git tag"
-                   gv.tag version()
-             }
-          }
-        }
        stage("Roll Back"){
              steps {
                  script {
