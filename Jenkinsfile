@@ -2,9 +2,7 @@ def gv
 
 pipeline{
     agent any
-    tools {
-        jdk "JDK"
-    }
+    
     stages{
         stage('SCM Checkout') {
             steps {
