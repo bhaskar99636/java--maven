@@ -1,5 +1,3 @@
-@Library('java-maven') _
-
 def gv
 
 pipeline{
