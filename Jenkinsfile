@@ -1,13 +1,16 @@
-@Library('java-maven') _
-
 def gv
 
 pipeline{
     agent any
-    tools {
-        jdk "JDK"
-    }
+    
     stages{
+        stage('SCM Checkout') {
+            steps {
+                git branch: '',
+                credentialsId: '',
+                url: 'https://github.com/bhaskar99636/java--maven.git'
+            }
+        }
         stage("Sonarqube analysis"){
             steps{
                 script {
@@ -25,14 +28,6 @@ pipeline{
                 }
             }
          }
-         stage("releaseVersion"){
-             steps {
-                 script {
-                   echo "git tag"
-                   gv.tag version()
-             }
-          }
-        }
        stage("Roll Back"){
              steps {
                  script {
