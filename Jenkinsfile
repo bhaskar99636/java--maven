@@ -1,45 +1,42 @@
-@Library('java-maven') _
-
 def gv
 
 pipeline{
     agent any
-    tools {
-        jdk "JDK"
-    }
+    
     stages{
+        stage('SCM Checkout') {
+            steps {
+                git branch: '',
+                credentialsId: '',
+                url: 'https://github.com/bhaskar99636/java--maven.git'
+            }
+        }
         stage("Sonarqube analysis"){
             steps{
-                withSonarQubeEnv(credentialsId: 'mysorarqube', installationName: 'sample_java') {
-                     sh 'mvn sonar:sonar' 
+                script {
+                    gv = load "pipeline_config.groovy"
+                    echo "sonarQube code quality check"
+                    gv.qualityanalysis() 
                   }
                 }
             }
         stage("Build jar") {
             steps {
                 script {
-                    gv = load "pipeline_config.groovy"
                     echo "building jar"
                     gv.buildJar()
                 }
             }
          }
-         stage("Roll Back"){
-             
+       stage("Roll Back"){
              steps {
                  script {
-                     if (currentBuild?.getPreviousBuild()?.result == 'FAILURE') {
-  if (currentBuild.resultIsBetterOrEqualTo(
-  currentBuild.getPreviousBuild().result)) {
-    echo 'build has been fixed
-  }
-}
-                   //sh 'roollback'
+                   echo "roll back to previous version"
+                   gv.rollback()
              }
           }
         }
-     stage ("post build action"){ 
-       steps {
+    }
         post{
         always{
             echo "========always========"
@@ -51,7 +48,6 @@ pipeline{
             echo "========pipeline execution failed========"
         }
     }
-  }
- }
- }
+ 
+ 
 }
