@@ -1,6 +1,6 @@
 def buildJar() {
     echo "building the application..."
-    sh 'mvnpackage'
+    sh 'mvn package'
 }
 
 def qualityanalysis() {
