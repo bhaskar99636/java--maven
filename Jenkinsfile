@@ -6,9 +6,9 @@ pipeline{
     stages{
         stage('SCM Checkout') {
             steps {
-                git branch: '',
-                credentialsId: '',
-                url: 'https://github.com/bhaskar99636/java--maven.git'
+                git branch: 'master',
+                credentialsId: 'b48e0e8b-8db0-4f49-911d-d3e5778511b3',
+                url: 'https://github.com/venkatd901/java--maven.git'
             }
         }
         stage("Sonarqube analysis"){
