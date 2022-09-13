@@ -11,7 +11,7 @@ pipeline{
                 url: 'https://github.com/venkatd901/java--maven.git'
             }
         }
-        stage("Sonarqube analysis"){
+        // stage("Sonarqube analysis"){
             steps{
                 script {
                     gv = load "pipeline_config.groovy"
@@ -23,6 +23,7 @@ pipeline{
         stage("Build jar") {
             steps {
                 script {
+                    gv = load "pipeline_config.groovy"
                     echo "building jar"
                     gv.buildJar()
                 }
