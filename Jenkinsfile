@@ -12,7 +12,7 @@ pipeline{
             }
         }
         stage("Sonarqube analysis"){
-            steps{
+            steps {
                 script {
                     gv = load "pipeline_config.groovy"
                     echo "sonarQube code quality check"
