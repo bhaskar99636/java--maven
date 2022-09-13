@@ -11,6 +11,15 @@ pipeline{
                 url: 'https://github.com/venkatd901/java--maven.git'
             }
         }
+        stage("Sonarqube analysis"){
+            steps{
+                script {
+                    gv = load "pipeline_config.groovy"
+                    echo "sonarQube code quality check"
+                    gv.qualityanalysis() 
+                  }
+                }
+            }
         stage("Build jar") {
             steps {
                 script {
