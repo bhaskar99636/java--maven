@@ -21,11 +21,10 @@ pipeline{
                 }
             }
          }
-       stage("Roll Back"){
+       stage("Roll Back") {
              steps {
                  script {
                    echo "roll back to previous version"
-                   gv.rollback()
              }
           }
         }
