@@ -25,6 +25,7 @@ pipeline{
              steps {
                  script {
                    echo "roll back to previous version"
+                   gv.rollback()
              }
           }
         }
