@@ -3,10 +3,38 @@ def buildJar() {
     sh 'mvn package'
 }
 
+def qualityanalysis() {
+    echo "sonarQube code quality check"
+    withSonarQubeEnv(credentialsId: 'mysorarqube', installationName: 'sample_java') {
+    sh 'mvn sonar:sonar' 
+                  }
+         }
+
+def testReport(){
+    echo 'Generated Test report...'
+    sh 'mvn test'
+}
+
+
 def rollback() {
     echo "roll back to previous version"
-    hudson.model.Result.SUCCESS.equals(currentBuild.rawBuild.getPreviousBuild()?.getResult()) == true
+    if (currentBuild?.getPreviousBuild()?.result == 'FAILURE') {
+    if (currentBuild.resultIsBetterOrEqualTo(
+    currentBuild.getPreviousBuild().result)) {
+    echo 'build has been fixed'
+   }
+  }
 }
+def tag version() {
+    void gitTag(Version releaseVersion) {
+      sshagent(['devops_deploy_DEV']) {
+        shell 'git tag -d \$(git tag)'
+        shell 'git fetch --tags'
+        echo "New release version ${releaseVersion.normalVersion}"
+        shell "git tag -fa ${releaseVersion.normalVersion} -m 'Release version ${releaseVersion.normalVersion}'"
+      }
+    }
+   }
 def buildImage() {
     echo "building the docker image..."
     withCredentials([usernamePassword(credentialsId: 'ACR', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
