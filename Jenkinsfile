@@ -4,22 +4,20 @@ pipeline{
     agent any
     
     stages{
-        stage('SCM Checkout') {
+          stage('code quality check via sonarQube') {
             steps {
-                git branch: '${params.branch_name}',
-                credentialsId: '${params.git_creds}',
-                url: '${params.git_url}'
-            }
-        }
-        stage("Sonarqube analysis"){
-            steps{
                 script {
-                    gv = load "pipeline_config.groovy"
-                    echo "sonarQube code quality check"
-                    gv.qualityanalysis() 
+                    if (env.BRANCH_NAME == 'dev' || env.BRANCH_NAME == 'QA' ) {
+                        echo 'I execute on the DEV and QA branch'
+                        gv = load "pipeline_config.groovy"
+                        echo "sonarQube code quality check"
+                        gv.qualityanalysis()
+                    } else {
+                        echo 'I execute elsewhere' 
                   }
                 }
             }
+        }
         stage("Build jar") {
             steps {
                 script {
@@ -28,7 +26,7 @@ pipeline{
                 }
             }
          }
-       stage("Roll Back"){
+       stage("Roll Back") {
              steps {
                  script {
                    echo "roll back to previous version"
