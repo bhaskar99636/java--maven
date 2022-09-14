@@ -1,6 +1,6 @@
 def buildJar() {
     echo "building the application..."
-    sh 'mvnpackage'
+    sh 'mvn package'
 }
 
 def qualityanalysis() {
@@ -9,6 +9,12 @@ def qualityanalysis() {
     sh 'mvn sonar:sonar' 
                   }
          }
+
+def testReport(){
+    echo 'Generated Test report...'
+    sh 'mvn test'
+}
+
 
 def rollback() {
     echo "roll back to previous version"
@@ -19,16 +25,7 @@ def rollback() {
    }
   }
 }
-def tag version() {
-    void gitTag(Version releaseVersion) {
-      sshagent(['devops_deploy_DEV']) {
-        shell 'git tag -d \$(git tag)'
-        shell 'git fetch --tags'
-        echo "New release version ${releaseVersion.normalVersion}"
-        shell "git tag -fa ${releaseVersion.normalVersion} -m 'Release version ${releaseVersion.normalVersion}'"
-      }
-    }
-   }
+
 def buildImage() {
     echo "building the docker image..."
     withCredentials([usernamePassword(credentialsId: 'ACR', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
