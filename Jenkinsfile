@@ -4,15 +4,20 @@ pipeline{
     agent any
     
     stages{
-        stage("Sonarqube analysis"){
-            steps{
+          stage('code quality check via sonarQube') {
+            steps {
                 script {
-                    gv = load "pipeline_config.groovy"
-                    echo "sonarQube code quality check"
-                    gv.qualityanalysis() 
+                    if (env.BRANCH_NAME == 'DEV' || env.BRANCH_NAME == 'QA' ) {
+                        echo 'I execute on the DEV and QA branch'
+                        gv = load "pipeline_config.groovy"
+                        echo "sonarQube code quality check"
+                        gv.qualityanalysis()
+                    } else {
+                        echo 'I execute elsewhere' 
                   }
                 }
             }
+        }
         stage("Build jar") {
             steps {
                 script {
