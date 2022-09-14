@@ -10,6 +10,12 @@ def qualityanalysis() {
                   }
          }
 
+def testReport(){
+    echo 'Generated Test report...'
+    sh 'mvn test'
+}
+
+
 def rollback() {
     echo "roll back to previous version"
     if (currentBuild?.getPreviousBuild()?.result == 'FAILURE') {
