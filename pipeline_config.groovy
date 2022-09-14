@@ -25,7 +25,7 @@ def rollback() {
    }
   }
 }
-def tag version() {
+def tagversion() {
     void gitTag(Version releaseVersion) {
       sshagent(['devops_deploy_DEV']) {
         shell 'git tag -d \$(git tag)'
