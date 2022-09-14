@@ -4,13 +4,6 @@ pipeline{
     agent any
     
     stages{
-        stage('SCM Checkout') {
-            steps {
-                git branch: '${params.branch_name}',
-                credentialsId: '${params.git_creds}',
-                url: '${params.git_url}'
-            }
-        }
         stage("Sonarqube analysis"){
             steps{
                 script {
