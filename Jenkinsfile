@@ -18,7 +18,20 @@ pipeline{
                 }
             }
         }
-        stage("Build jar") {
+           stage('Generate Junit Test Report') {
+            steps {
+              script {
+                  if (env.BRANCH_NAME == 'dev' || env.BRANCH_NAME == 'QA' ) {
+                    echo "generating report"
+                    build("Test") 
+                    gv.testReport()
+                } else {
+                        echo 'I execute elsewhere' 
+                  }
+              }
+            }
+         }
+           stage("Build jar") {
             steps {
                 script {
                     echo "building jar"
