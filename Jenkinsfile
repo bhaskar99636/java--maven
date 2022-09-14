@@ -23,8 +23,7 @@ pipeline{
               script {
                   if (env.BRANCH_NAME == 'dev' || env.BRANCH_NAME == 'QA' ) {
                     gv = load "pipeline_config.groovy"
-                    echo "generating report"
-                    build("Test") 
+                    echo "Generated Test report..."
                     gv.testReport()
                 } else {
                         echo 'I execute elsewhere' 
