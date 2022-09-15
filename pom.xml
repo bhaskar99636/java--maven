@@ -50,7 +50,8 @@
    			</plugin-->
 		</plugins>
 	</build>
-	<reporting>
+	
+<reporting>
     <plugins>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
@@ -68,16 +69,15 @@
     </plugins>
 </reporting>
 
-	<distributionManagement>
+<distributionManagement>
     <snapshotRepository>
       <id>nexusdeploymentrepo</id>
       <url>http://52.140.6.198:8081/repository/maven-snapshots/</url>
     </snapshotRepository>
-	<repository>
+    <repository>
 	  <id>nexusdeploymentrepo</id>
-      <url>http://52.140.6.198:8081/repository/advisingbank-release/</url>
+          <url>http://52.140.6.198:8081/repository/advisingbank-release/</url>
     </repository>
-  
   </distributionManagement>
 
 </project>
