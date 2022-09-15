@@ -14,7 +14,6 @@ def testReport(){
     echo 'Generated Test report...'
     sh 'mvn test'
     sh 'mvn surefire-report:report'
-    sh 'mvn clean test site'
 }
 
 
