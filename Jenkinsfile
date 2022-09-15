@@ -3,6 +3,10 @@ def gv
 pipeline{
     agent any
     
+    parameters {
+        choice(name: "Git_Branch_Name", choices: ["dev", "QA", "Prod"],  description: "Select the branch to checkout")
+    }
+    
     stages{
           stage('code quality check via sonarQube') {
             steps {
