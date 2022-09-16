@@ -14,6 +14,7 @@ def testReport(){
     echo 'Generated Test report...'
     sh 'mvn test site'
     sh 'mvn surefire-report:report'
+    sh 'xsltproc TEST-com.example.demo.DemoApplicationTests.xml stylesheet.xslt > TEST-com.example.demo.DemoApplicationTests.html'
 }
 
 
