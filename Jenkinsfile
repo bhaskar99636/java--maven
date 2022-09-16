@@ -44,7 +44,7 @@ pipeline{
           allowMissing: false,
           alwaysLinkToLastBuild: false,
           keepAll: true,
-          reportDir: 'surefire-reports',
+          reportDir: 'site',
           reportFiles: 'TEST-com.example.demo.DemoApplicationTests.xml',
           reportName: "RCov Report"
     ])
