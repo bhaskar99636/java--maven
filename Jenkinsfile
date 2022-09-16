@@ -38,7 +38,7 @@ pipeline{
             }
          }
         stage('generate HTML Report') {
-        steps {
+          steps {
             script {
                 publishHTML (target: [
           allowMissing: false,
