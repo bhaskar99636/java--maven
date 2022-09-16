@@ -37,6 +37,21 @@ pipeline{
               }
             }
          }
+        stage('generate HTML Report') {
+        steps {
+            script {
+                publishHTML (target: [
+          allowMissing: false,
+          alwaysLinkToLastBuild: false,
+          keepAll: true,
+          reportDir: 'coverage',
+          reportFiles: 'TEST-com.example.demo.DemoApplicationTests.xml',
+          reportName: "RCov Report"
+    ])
+
+    }
+ }
+}
            stage("Build jar") {
             steps {
                 script {
