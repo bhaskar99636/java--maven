@@ -68,6 +68,23 @@
         </plugin>
     </plugins>
 </reporting>
+	<junit showoutput="on" printsummary="on" fork="false" haltonfailure="false"
+    failureproperty="unittest.failure">
+    <classpath>
+      <pathelement path="${build.classpath}"/>
+      <pathelement path="${classes}"/>
+    </classpath>
+    <batchtest todir="${unittests.results}">
+      <fileset dir="${classes}">
+        <include name="${batchtest.prefix}@{test}_test.class" />
+      </fileset>
+      <formatter type="xml"/>
+    </batchtest>
+  </junit>
+  <junitreport todir="${unittests.results}">
+    <fileset dir="${unittests.results}"/>
+    <report todir="${unittests.results}"/>
+  </junitreport>
 
 <distributionManagement>
     <snapshotRepository>
