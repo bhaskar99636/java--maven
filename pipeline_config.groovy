@@ -12,7 +12,7 @@ def qualityanalysis() {
 
 def testReport(){
     echo 'Generated Test report...'
-    sh 'mvn clean test site'
+    sh 'mvn site'
     sh 'mvn surefire-report:report'
 }
 
