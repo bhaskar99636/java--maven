@@ -43,7 +43,7 @@ def uploadArtifactToNexus() {
             nexusVersion: 'nexus3',
             protocol: 'http',
             allowInsecureProtocol: 'true',
-            repository: 'maven-releases',
+            repository: 'maven-snapshots',
             version: '2.0-SNAPSHOT'
 }
 
