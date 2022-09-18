@@ -2,9 +2,10 @@ def gv
 
 pipeline{
     agent any
-    
-    parameters {
-        choice(name: "Git_Branch_Name", choices: ["dev", "QA", "Prod"],  description: "Select the branch to checkout")
+    environment {
+        registry = "java_demo"
+        registryCredential = 'ACR'
+        dockerImage = ''
     }
     
     stages{
@@ -76,7 +77,21 @@ pipeline{
              }
           }
         }
+      stage('Build Docker Image') {
+            steps {
+
+                 "\n \n \n \n ***************************************"
+                 "         Build Docker Image"
+                 "***************************************\n \n \n"
+
+                script {
+                    docker.build("defsloc.azurecr.io/" + "demo-2.0-SNAPSHOT.jar.${env.BUILD_NUMBER}")
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                }
+            }
+        }
     }
+    
         post{
         always{
             echo "========always========"
