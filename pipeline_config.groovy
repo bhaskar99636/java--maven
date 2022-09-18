@@ -54,6 +54,7 @@ def buildImage() {
     }
 
 def pushImage() {
+    sh "echo $PASS | docker login -u $USER --password-stdin"
     docker.withRegistry('', registryCredential) {
     dockerImage.push()
     }
