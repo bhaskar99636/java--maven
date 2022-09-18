@@ -3,9 +3,10 @@ def gv
 pipeline{
     agent any
     environment {
-        registry = "java_demo"
+        registry = "webapp"
         registryCredential = 'ACR'
         dockerImage = ''
+        registryUrl = 'defsloc.azurecr.io'
     }
     
     stages{
@@ -77,20 +78,16 @@ pipeline{
              }
           }
         }
-      stage('Build Docker Image') {
-            steps {
-
-                 //"\n \n \n \n ***************************************"
-                 //"         Build Docker Image"
-                 //"***************************************\n \n \n"
-
-                script {
-                    docker.build("defsloc.azurecr.io/" + "demo-2.0-SNAPSHOT.jar.${env.BUILD_NUMBER}")
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                }
-            }
-        }
-    }
+      stage('Building Docker image') {
+         steps{
+           script {
+             withCredentials([usernamePassword(credentialsId: 'ACR', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+             sh "echo $PASS | docker login -u $USER --password-stdin"
+             dockerImage = docker.build registry + ":$BUILD_NUMBER"
+       }
+     }
+  }
+}
     
         post{
         always{
