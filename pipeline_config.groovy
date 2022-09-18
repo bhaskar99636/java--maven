@@ -54,7 +54,6 @@ def buildImage() {
     }
 
 def pushImage() {
-    withCredentials([usernameColonPassword(credentialsId: 'ACR', variable: '')])
     docker.withRegistry('', registryCredential) {
     dockerImage.push()
     }
