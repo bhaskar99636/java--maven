@@ -62,7 +62,7 @@ pipeline{
                 }
             }
          }
-        stage('nexusArtifactsUploader') {
+        stage('Upload Artifact to Nexus') {
             steps {
                 script { 
                     echo "uploading artifact to nexus"
@@ -78,7 +78,7 @@ pipeline{
              }
           }
         }
-      stage('Building Docker image') {
+      stage('Build Docker image') {
          steps{
            script {
              echo "building the docker image"
@@ -86,6 +86,13 @@ pipeline{
      }
   }
 }
+      stage('Push Image to ACR') {
+            steps {
+                script {
+                    echo "pushing the docker image to ACR"
+                    gv.pushImage()
+                }
+            }
     
         
   }
