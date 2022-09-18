@@ -81,9 +81,8 @@ pipeline{
       stage('Building Docker image') {
          steps{
            script {
-             withCredentials([usernamePassword(credentialsId: 'ACR', passwordVariable: 'PASS', usernameVariable: 'USER')])
-             sh "echo $PASS | docker login -u $USER --password-stdin"
-             dockerImage = docker.build registry + ":$BUILD_NUMBER"
+             echo "building the docker image"
+             gv.buildImage()
      }
   }
 }
