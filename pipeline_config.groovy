@@ -53,6 +53,12 @@ def buildImage() {
     dockerImage = docker.build registry + ":$BUILD_NUMBER"
     }
 
+def pushImage() {
+    echo "pushing the docker image to ACR"
+    docker.withRegistry('', registryCredential) {
+    dockerImage.push()
+    }
+
 def deployApp() {
     echo 'deploying the application...'
 } 
