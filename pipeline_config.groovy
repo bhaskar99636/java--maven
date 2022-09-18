@@ -49,7 +49,7 @@ def uploadArtifactToNexus() {
 
 def buildImage() {
     echo "building the docker image..."
-        docker.build("demojava" + "demo-2.0-SNAPSHOT.jar.${env.BUILD_NUMBER}")
+        docker.build("demojava" .${env.BUILD_NUMBER}")
         dockerImage = docker.build registry + ":$BUILD_NUMBER"
     }
 
