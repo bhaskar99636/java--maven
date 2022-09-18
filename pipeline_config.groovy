@@ -55,6 +55,7 @@ def buildImage() {
 
 def pushImage() {
     echo "pushing the docker image to ACR"
+    sh 'az acr login -n defsloc'
     docker.withRegistry('', registryCredential) {
     dockerImage.push()
     }
