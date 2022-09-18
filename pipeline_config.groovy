@@ -48,9 +48,9 @@ def uploadArtifactToNexus() {
 }
 
 def buildImage() {
-    echo "building the docker image..."
-        docker.build("demojava" + ${env.BUILD_NUMBER}")
-        dockerImage = docker.build registry + ":$BUILD_NUMBER"
+    echo "building the docker image"
+    docker.build("defsloc.azurecr.io/" + "demojava.${env.BUILD_NUMBER}")
+    dockerImage = docker.build registry + ":$BUILD_NUMBER"
     }
 
 def deployApp() {
