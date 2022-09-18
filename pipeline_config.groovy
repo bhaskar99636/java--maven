@@ -50,7 +50,7 @@ def uploadArtifactToNexus() {
 def buildImage() {
     echo "building the docker image..."
     withCredentials([usernamePassword(credentialsId: 'ACR', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-        sh 'docker build -t demojava/demo-2.0-SNAPSHOT.jar .'
+        sh 'docker build -t demo_java .'
         sh "echo $PASS | docker login -u $USER --password-stdin"
         sh 'docker push demojava/demo:latest'
         dockerImage = docker.build registryName + ":$BUILD_NUMBER"
