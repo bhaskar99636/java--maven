@@ -80,9 +80,9 @@ pipeline{
       stage('Build Docker Image') {
             steps {
 
-                 "\n \n \n \n ***************************************"
-                 "         Build Docker Image"
-                 "***************************************\n \n \n"
+                 //"\n \n \n \n ***************************************"
+                 //"         Build Docker Image"
+                 //"***************************************\n \n \n"
 
                 script {
                     docker.build("defsloc.azurecr.io/" + "demo-2.0-SNAPSHOT.jar.${env.BUILD_NUMBER}")
