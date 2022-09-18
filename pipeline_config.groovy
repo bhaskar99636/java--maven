@@ -53,6 +53,7 @@ def buildImage() {
         sh 'docker build -t demojava/demo-2.0-SNAPSHOT.jar .'
         sh "echo $PASS | docker login -u $USER --password-stdin"
         sh 'docker push demo_java/demo:latest'
+        dockerImage = docker.build registryName + ":$BUILD_NUMBER"
     }
 } 
 
