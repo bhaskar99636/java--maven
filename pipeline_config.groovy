@@ -58,6 +58,7 @@ def pushImage() {
     docker.withRegistry('', registryCredential) {
     dockerImage.push()
     }
+}
 
 def deployApp() {
     echo 'deploying the application...'
