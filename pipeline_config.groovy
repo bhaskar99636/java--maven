@@ -52,7 +52,7 @@ def buildImage() {
     withCredentials([usernamePassword(credentialsId: 'ACR', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
         sh 'docker build -t demojava/demo-2.0-SNAPSHOT.jar .'
         sh "echo $PASS | docker login -u $USER --password-stdin"
-        sh 'docker push demo_java/demo:latest'
+        sh 'docker push demojava/demo:latest'
         dockerImage = docker.build registryName + ":$BUILD_NUMBER"
     }
 } 
