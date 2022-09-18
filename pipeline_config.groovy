@@ -49,11 +49,8 @@ def uploadArtifactToNexus() {
 
 def buildImage() {
     echo "building the docker image..."
-    withCredentials([usernamePassword(credentialsId: 'ACR', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-        sh 'docker build -t demo_java .'
-        sh "echo $PASS | docker login -u $USER --password-stdin"
-        sh 'docker push demojava/demo:latest'
-        dockerImage = docker.build registryName + ":$BUILD_NUMBER"
+        docker.build("defsloc.azurecr.io/" + "demo-2.0-SNAPSHOT.jar.${env.BUILD_NUMBER}")
+        dockerImage = docker.build registry + ":$BUILD_NUMBER"
     }
 } 
 
