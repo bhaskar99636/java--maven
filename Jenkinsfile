@@ -5,7 +5,7 @@ pipeline{
     agent any
     environment {
         registry = "webapp"
-        registryCredential = 'CREDENTIALS'
+        registryCredential = 'ACR'
         dockerImage = ''
     }
     
