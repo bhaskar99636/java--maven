@@ -54,12 +54,12 @@ def buildImage() {
     }
 
 def pushImage() {
-     withCredentials([usernameColonPassword(credentialsId: 'ACR', variable: 'CREDENTIALS')]) {
-     sh "echo $PASS | docker login -u $USER --password-stdin"
-     docker.withRegistry('', registryCredential) {
-     dockerImage.push()
+    withCredentials([usernamePassword(credentialsId: 'ACR', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+    sh "echo $PASS | docker login ${registryUrl} -u ${USER} --password-stdin"
+    docker.withRegistry('', registryCredential) {
+    dockerImage.push()
     }
-    }
+  }
 }
 
 def deployApp() {
