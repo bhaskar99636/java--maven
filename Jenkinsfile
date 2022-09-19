@@ -4,7 +4,7 @@ pipeline{
     agent any
     environment {
         registry = "webapp"
-        registryCredential = 'ACR'
+        registryCredential = 'CREDENTIALS'
         dockerImage = ''
         registryUrl = 'defsloc.azurecr.io'
     }
