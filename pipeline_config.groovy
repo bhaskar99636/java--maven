@@ -54,19 +54,12 @@ def buildImage() {
     }
 
 def pushImage() {
-     withCredentials([
-                usernamePassword(
-                  credentialsId: "${REGISTRY_CREDENTIALS}",
-                  usernameVariable: 'REGISTRY_USER', passwordVariable: 'REGISTRY_PASS'
-                )
-              ]) {
-                sh """
-                echo ${REGISTRY_PASS} | docker login ${REGISTRY_URL} -u ${REGISTRY_USER} --password-stdin
-                docker push ${IMAGE_BRANCH_TAG}.${env.GIT_COMMIT[0..6]}
-                docker tag ${IMAGE_BRANCH_TAG}.${env.GIT_COMMIT[0..6]} ${IMAGE_BRANCH_TAG}
-                docker push ${IMAGE_BRANCH_TAG}
-                """
-              }
+     withCredentials([usernameColonPassword(credentialsId: 'ACR', variable: 'CREDENTIALS')]) {
+     sh "echo $PASS | docker login -u $USER --password-stdin"
+     docker.withRegistry('', registryCredential) {
+     dockerImage.push()
+    }
+    }
 }
 
 def deployApp() {
