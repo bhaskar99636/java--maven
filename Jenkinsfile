@@ -1,4 +1,5 @@
 def gv
+def REGISTRY_URL = 'defsloc.azurecr.io'
 
 pipeline{
     agent any
@@ -6,7 +7,6 @@ pipeline{
         registry = "webapp"
         registryCredential = 'CREDENTIALS'
         dockerImage = ''
-        registryUrl = 'defsloc.azurecr.io'
     }
     
     stages{
