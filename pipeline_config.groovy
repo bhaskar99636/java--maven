@@ -55,7 +55,7 @@ def buildImage() {
 
 def pushImage() {
     withCredentials([usernamePassword(credentialsId: 'ACR', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-    sh "echo $PASS | docker login ${registryUrl} -u ${USER} --password-stdin"
+    sh "echo $PASS | docker login ${REGISTRY_URL} -u ${USER} --password-stdin"
     docker.withRegistry('', registryCredential) {
     dockerImage.push()
     }
