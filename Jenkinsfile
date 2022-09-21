@@ -1,7 +1,7 @@
 def gv
 
 pipeline{
-    agent any
+    agent label
     environment {
         registry = "webapp"
         registryCredential = 'ACR'
