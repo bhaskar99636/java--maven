@@ -21,6 +21,7 @@
 		<sonar.password>admin</sonar.password>
 		<sonar.projectkey>maven_java</sonar.projectkey>
 		<sonar.projectName>maven_java</sonar.projectName>
+		<sonar.projectBaseDir>/var/lib/jenkins/workspace/java-maven</sonar.projectBaseDir>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
                 <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
                 <maven.compiler.release>11</maven.compiler.release>
