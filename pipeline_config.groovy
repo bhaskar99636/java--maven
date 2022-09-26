@@ -5,7 +5,7 @@ def buildJar() {
 
 def qualityanalysis() {
     echo "sonarQube code quality check"
-    withSonarQubeEnv(credentialsId: 'mysorarqube', installationName: 'sample_java') {
+    withSonarQubeEnv(credentialsId: 'Sonar', installationName: 'sample_java') {
     sh 'mvn sonar:sonar' 
     sh 'mvn verify sonar:sonar -Dsonar.host.url=http://20.193.128.173:9000 -Dsonar.projectKey=com.example:demo -Dsonar.login=admin -Dsonar.password=admin'
                   }
