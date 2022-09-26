@@ -262,6 +262,20 @@ under the License.
        </repository>
      </repositories>
    </profile>
+	  
+<profile>
+    <id>sonar</id>
+        <activation>
+            <activeByDefault>true</activeByDefault>
+        </activation>
+        <properties>
+            <sonar.host.url>http://20.193.128.173:9000</sonar.host.url>
+            <sonar.pdf.username>admin</sonar.pdf.username>
+            <sonar.pdf.password>admin</sonar.pdf.password>
+            <sonar.projectkey>com.example:demo</sonar.projectkey>
+	    <sonar.projectName>demo</sonar.projectName>
+        </properties>
+    </profile>
     
   </profiles>
 
