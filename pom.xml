@@ -22,11 +22,11 @@
 		<sonar.projectkey>com.example:demo</sonar.projectkey>
 		<sonar.projectName>demo</sonar.projectName>
 	</properties>
-	<properties>
+	 <properties>
                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
                <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
                <maven.compiler.release>11</maven.compiler.release>
-       </properties>
+         </properties>
 	
 	<profiles>
            <profile>
@@ -70,11 +70,11 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M4</version>
             </plugin>
-		<plugin>
-          <groupId>org.sonarsource.scanner.maven</groupId>
-          <artifactId>sonar-maven-plugin</artifactId>
-          <version>3.7.0.1746</version>
-           </plugin>
+	       <plugin>
+                 <groupId>org.sonarsource.scanner.maven</groupId>
+                 <artifactId>sonar-maven-plugin</artifactId>
+                 <version>3.7.0.1746</version>
+               </plugin>
            <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
