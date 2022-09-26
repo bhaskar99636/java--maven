@@ -84,19 +84,13 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
         </plugin>
-        </plugins>
-    </build>
-	<build>
-  <pluginManagement>
-    <plugins>
       <plugin>
         <groupId>org.codehaus.sonar</groupId>
         <artifactId>sonar-maven-plugin</artifactId>
         <version>2.5</version>
       </plugin>
-    </plugins>
-  </pluginManagement>
-</build>
+        </plugins>
+    </build>
 
     <!-- `mvn clean test site` to generate the junit html report-->
     <reporting>
