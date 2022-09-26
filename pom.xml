@@ -16,7 +16,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<sonar.branch>Dev_${sonar.profile}</sonar.branch>
+		<sonar.branch>Dev${sonar.profile}</sonar.branch>
 	</properties>
 	
 	<profiles>
