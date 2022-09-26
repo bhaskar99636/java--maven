@@ -16,7 +16,18 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<sonar.branch>Dev_${sonar.profile}</sonar.branch>
 	</properties>
+	
+	<profiles>
+           <profile>
+             <id>QualityProfileOne</id>
+            <properties>
+               <sonar.profile>MyQualityProfile1</sonar.profile>
+             </properties>
+         </profile>
+      </profiles>
+
 
 	<dependencies>
 		<dependency>
@@ -36,6 +47,7 @@
 			</exclusions>
 		</dependency>
 	</dependencies>
+	
 
 	<build>
         <plugins>
