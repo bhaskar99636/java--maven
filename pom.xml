@@ -21,13 +21,10 @@
 		<sonar.password>admin</sonar.password>
 		<sonar.projectkey>com.example:demo</sonar.projectkey>
 		<sonar.projectName>demo</sonar.projectName>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+                <maven.compiler.release>11</maven.compiler.release>
 	</properties>
-	 <properties>
-               <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-               <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-               <maven.compiler.release>11</maven.compiler.release>
-         </properties>
-	
 	<profiles>
            <profile>
              <id>QualityProfileOne</id>
