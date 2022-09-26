@@ -14,7 +14,7 @@ def qualityanalysis() {
 def testReport(){
     echo 'Generated Test report...'
     sh 'mvn site'
-    sh 'mvn surefire-report:report'
+    sh 'mvn verify sonar:sonar -Dsonar.host.url=http://20.193.128.173:9000 -Dsonar.login=e9d388747edb4fb1218b048bbe671cd772aa7492 -Dsonar.login=admin -Dsonar.password=admin'
 }
 
 
