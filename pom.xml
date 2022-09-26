@@ -19,8 +19,8 @@
 		<sonar.host.url>http://20.193.128.173:9000/</sonar.host.url>
 		<sonar.login>admin</sonar.login>
 		<sonar.password>admin</sonar.password>
-		<sonar.projectkey>com.example:demo</sonar.projectkey>
-		<sonar.projectName>demo</sonar.projectName>
+		<sonar.projectkey>maven_java</sonar.projectkey>
+		<sonar.projectName>maven_java</sonar.projectName>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
                 <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
                 <maven.compiler.release>11</maven.compiler.release>
