@@ -270,8 +270,8 @@ under the License.
         </activation>
         <properties>
             <sonar.host.url>http://20.193.128.173:9000</sonar.host.url>
-            <sonar.pdf.username>admin</sonar.pdf.username>
-            <sonar.pdf.password>admin</sonar.pdf.password>
+            <sonar.username>admin</sonar.username>
+            <sonar.password>admin</sonar.password>
             <sonar.projectkey>com.example:demo</sonar.projectkey>
 	    <sonar.projectName>demo</sonar.projectName>
         </properties>
