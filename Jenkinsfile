@@ -73,7 +73,7 @@ pipeline{
         stage('deploy to tomcat') {
             steps {
                 sshagent(['deploy']) {
-                    sh "scp -o StrictHostKeyChecking=no java-maven/target/demo-2.0-SNAPSHOT.jar azureuser@20.219.92.67/opt/tomcat/apache-tomcat-10.0.26/webapps"
+                    sh "scp -o StrictHostKeyChecking=no target/demo-2.0-SNAPSHOT.jar azureuser@20.219.92.67/opt/tomcat/apache-tomcat-10.0.26/webapps"
                  }
             }
         }
