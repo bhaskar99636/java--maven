@@ -77,11 +77,6 @@ pipeline{
                  }
             }
         }
-        post {
-           failure {
-             script { env.FAILURE_STAGE = 'deploy to tomcat' }
-           }
-         }
        stage("Roll Back") {
              steps {
                  script {
