@@ -76,6 +76,7 @@ pipeline{
                     sh "whoami"
                     sh "scp -o StrictHostKeyChecking=no target/demo-2.0-SNAPSHOT.jar azureuser@20.219.92.67:/opt/tomcat/apache-tomcat-10.0.26/webapps"
                  }
+             }
           post {
            failure {
              script { env.FAILURE_STAGE = 'deploy to tomcat' }
@@ -83,7 +84,6 @@ pipeline{
                   }
               }
             }
-        }
        stage("Roll Back") {
              steps {
                  script {
