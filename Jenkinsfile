@@ -83,6 +83,9 @@ pipeline{
              echo "build fails at deployment stage"
                   }
               }
+            success{
+            echo "pipeline executed successfully"
+              }
             }
        stage("Roll Back") {
              steps {
