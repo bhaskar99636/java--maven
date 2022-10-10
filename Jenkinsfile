@@ -82,10 +82,10 @@ pipeline{
              script { env.FAILURE_STAGE = 'deploy to tomcat' }
              echo "pipeline execution failed at deployment"
                   }
-              }
             success{
             echo "pipeline executed successfully"
               }
+             }
             }
        stage("Roll Back") {
              steps {
