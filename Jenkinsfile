@@ -78,7 +78,7 @@ pipeline{
                  }
           post {
            failure {
-             script { env.FAILURE_STAGE = 'Deploy' }
+             script { env.FAILURE_STAGE = 'deploy to tomcat' }
              echo "build fails at deployment stage"
                   }
               }
