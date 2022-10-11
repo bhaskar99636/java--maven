@@ -57,23 +57,21 @@ pipeline{
            stage ('Build and Package') {
                 steps {
                  script {
-      //begin common code 
-      if (fileExists()) {
-        def readcounter =    readFile(file: 'version.txt')
-        readcounter = readcounter.toInteger() +1
-        def version= "Version" + readcounter
-        println(version)
-        sh 'mvn package -Dartifactversion=' + "${version}"
-        writeFile(file: 'version.txt',    text:readcounter.toString())
-      } //if condition
-      else {
-        currentBuild.result = "FAILURE" 
-      } //else condition
-//end common code
-    } //script
-    echo "Build and Package Completed" 
-  } //steps
-} //stage
+                     if (fileExists()) {
+                     def readcounter =    readFile(file: 'version.txt')
+                     readcounter = readcounter.toInteger() +"1"
+                     def version= "Version" + readcounter
+                     println(version)
+                     sh 'mvn package -Dartifactversion=' + "${version}"
+                     writeFile(file: 'version.txt',    text:readcounter.toString())
+                     }
+                     else {
+                     currentBuild.result = "FAILURE" 
+                  } 
+             } 
+                     echo "Build and Package Completed" 
+          } 
+      } 
         stage('Upload Artifact to Nexus') {
             steps {
                 script { 
