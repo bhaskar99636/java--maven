@@ -63,7 +63,7 @@ pipeline{
         readcounter = readcounter.toInteger() +1
         def version= "Version" + readcounter
         println(version)
-        bat 'mvn package -Dartifactversion=' + "${version}"
+        sh 'mvn package -Dartifactversion=' + "${version}"
         writeFile(file: 'version.txt',    text:readcounter.toString())
       } //if condition
       else {
