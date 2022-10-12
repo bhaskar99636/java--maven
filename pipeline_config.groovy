@@ -3,7 +3,7 @@ def buildJar() {
     sh 'mvn package'
 }
 
-def counter = 0
+def counter = 1
 def data = "Version" + counter
 writeFile(file: 'version.txt', text: counter.toString())
 
