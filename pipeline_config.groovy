@@ -3,6 +3,10 @@ def buildJar() {
     sh 'mvn package'
 }
 
+def counter = 0
+def data = "Version" + counter
+writeFile(file: 'version.txt', text: counter.toString())
+
 def qualityanalysis() {
     echo "sonarQube code quality check"
     withSonarQubeEnv(credentialsId: 'maven_java', installationName: 'maven_java'){
