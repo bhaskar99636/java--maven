@@ -59,7 +59,7 @@ pipeline{
                  script {
                      if (fileExists()) {
                      def readcounter =    readFile(file: 'version.txt')
-                     readcounter = readcounter.toInteger() +1
+                     readcounter = readcounter.toInteger(" ") +1
                      def version= "Version" + readcounter
                      println(version)
                      sh 'mvn package -Dartifactversion=' + "${version}"
