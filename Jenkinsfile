@@ -85,20 +85,21 @@ pipeline{
         }
         stage('deploy to tomcat') {
             steps {
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                 sshagent(['deploy']) {
                     sh "whoami"
                     sh "scp -o StrictHostKeyChecking=no target/demo-${params.VERSION}.jar azureuser@20.219.92.67:/opt/tomcat/apache-tomcat-10.0.26/webapps"
                  }
              }
-          post {
-           failure {
-             script { env.FAILURE_STAGE = 'deploy to tomcat' }
-             echo "pipeline execution failed at deployment"
-                  }
-            success{
-            echo "pipeline executed successfully"
-              }
-             }
+            }
+          post{
+                    always{
+                        echo "always"
+                        }
+                    failure {
+                        echo "failure"
+                        }
+                    }
             }
        stage("Roll Back") {
              steps {
