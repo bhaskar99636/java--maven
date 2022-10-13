@@ -2,6 +2,10 @@ def gv
 
 pipeline{
     agent any
+    
+    parameters {
+        string(defaultValue: "0.0-SNAPSHOT", description: 'Enter your Version number ', name: 'VERSION')
+    }
     environment {
         registry = "webapp"
         registryCredential = ''
