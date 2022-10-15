@@ -87,7 +87,7 @@ pipeline{
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                 sshagent(['deploy']) {
-                    sh "whoami"
+                    sh "mv /var/lib/jenkins/workspace/javatest/target/demo-2.0-SNAPSHOT.jar /var/lib/jenkins/workspace/javatest/test-target/demo-2.0-SNAPSHOT.jar_backup"
                     sh "scp -o StrictHostKeyChecking=no target/demo-${params.VERSION}.jar azureuser@20.219.92.67:/opt/tomcat/apache-tomcat-10.0.26/webapps"
                  }
              }
