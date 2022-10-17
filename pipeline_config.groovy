@@ -22,10 +22,9 @@ def testReport(){
 
 
 def rollback() {
-       if {
-           (currentBuild.result = "FAILURE")
+       if (currentBuild.result = "FAILURE") {
            sh "scp -o StrictHostKeyChecking=no target/demo-2.0-SNAPSHOT.jar_backup azureuser@20.219.92.67:/opt/tomcat/apache-tomcat-10.0.26/webapps"
-       echo "roll back to previous version"
+           echo "roll back to previous version"
      } else {
            echo 'I execute next stage' 
      }
