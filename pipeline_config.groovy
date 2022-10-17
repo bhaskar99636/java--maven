@@ -23,13 +23,17 @@ def testReport(){
 
 def rollback() {
     echo "roll back to previous version"
-    if (currentBuild?.getPreviousBuild()?.result == 'FAILURE') {
-        sh "scp -o StrictHostKeyChecking=no target/demo-2.0-SNAPSHOT.jar_backup azureuser@20.219.92.67:/opt/tomcat/apache-tomcat-10.0.26/webapps"
+    when {
+        expression { 
+            (currentBuild?.getPreviousBuild()?.result == 'FAILURE') {
+             sh "scp -o StrictHostKeyChecking=no target/demo-2.0-SNAPSHOT.jar_backup azureuser@20.219.92.67:/opt/tomcat/apache-tomcat-10.0.26/webapps"
     if (currentBuild.resultIsBetterOrEqualTo(
     currentBuild.getPreviousBuild().result)) {
     echo 'build has been fixed'
    }
   }
+}
+    }
 }
 
 def uploadArtifactToNexus() {
