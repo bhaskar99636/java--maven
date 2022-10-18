@@ -110,13 +110,13 @@ pipeline{
                 }
             }
              }
-        /* stage('Build Docker image') {
+         stage('Build Docker image') {
          steps{
            script {
              echo "building the docker image"
              gv.buildImage()
      }
   }
-} */       
+}       
   }
  }
