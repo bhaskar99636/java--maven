@@ -5,6 +5,7 @@ pipeline{
     
     parameters {
         string(defaultValue: "0.0-SNAPSHOT", description: 'Enter your Version number ', name: 'VERSION')
+        string(defaultValue: "${BUILD_NUMBER}", description: 'Enter your Version number ', name: 'version')
     }
     environment {
         registry = "webapp"
