@@ -69,7 +69,10 @@ pipeline{
                      println(version)
                      sh 'mvn package -Dartifactversion=' + "${version}"
                        }
-                     } 
+                  else {
+                     currentBuild.result = "FAILURE" 
+                  }    
+                 }
                      echo "Build and Package Completed" 
           } 
       } 
