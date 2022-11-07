@@ -18,7 +18,7 @@ pipeline{
             steps {
                 script {
                     if (env.BRANCH_NAME == 'dev' || 
-                        env.BRANCH_NAME == 'QA' ||
+                        env.BRANCH_NAME == 'QA'  ||
                         env.BRANCH_NAME == 'feature') {
                         echo 'I execute on the DEV and QA branch'
                         gv = load "pipeline_config.groovy"
