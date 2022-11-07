@@ -18,7 +18,8 @@ pipeline{
             steps {
                 script {
                     if (env.BRANCH_NAME == 'dev' || 
-                        env.BRANCH_NAME == 'QA') {
+                        env.BRANCH_NAME == 'QA' ||
+                        env.BRANCH_NAME == 'feature') {
                         echo 'I execute on the DEV and QA branch'
                         gv = load "pipeline_config.groovy"
                         echo "sonarQube code quality check"
@@ -33,7 +34,8 @@ pipeline{
             steps {
               script {
                   if (env.BRANCH_NAME == 'dev' || 
-                      env.BRANCH_NAME == 'QA' ) {
+                      env.BRANCH_NAME == 'QA' ||
+                      env.BRANCH_NAME == 'feature') {
                       gv = load "pipeline_config.groovy"
                       echo "Generated Test report..."
                       gv.testReport()
