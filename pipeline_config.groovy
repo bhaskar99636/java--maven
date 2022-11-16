@@ -36,7 +36,7 @@ def uploadArtifactToNexus() {
              [
                  artifactId: 'demo',
                  classifier: '',
-                 file: '/var/lib/jenkins/workspace/java-maven/target/demo-${params.VERSION}.jar',
+                 file: '/var/lib/jenkins/workspace/java-maven/target/demo-2.0-SNAPSHOT.jar',
                  type: 'jar'
                  ]
             ],
@@ -47,7 +47,7 @@ def uploadArtifactToNexus() {
             protocol: 'http',
             allowInsecureProtocol: 'true',
             repository: 'maven-snapshots',
-            version: '${params.VERSION}'
+            version: '2.0'
 }
 
 def buildImage() {
