@@ -77,14 +77,14 @@ pipeline{
                      echo "Build and Package Completed" 
           } 
       } 
-        stage('Upload Artifact to Nexus') {
+        /*stage('Upload Artifact to Nexus') {
             steps {
                 script { 
                     echo "uploading artifact to nexus"
                     gv.uploadArtifactToNexus()
                 }
             }
-        }
+        }*/
         stage('deploy to tomcat') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
