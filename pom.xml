@@ -59,7 +59,7 @@
 		 <plugin>
     <groupId>org.owasp</groupId>
     <artifactId>dependency-check-maven</artifactId>
-    <version>7.3.1</version>
+    <version>7.3.2</version>
     <configuration>
         <cveUrlModified>https://www.lhorn.de/nist/nvdcve-1.1-2019.json.gz</cveUrlModified>
         <cveUrlBase>https://www.lhorn.de/nist/nvdcve-1.1-2019.json.gz</cveUrlBase>
