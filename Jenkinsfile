@@ -14,8 +14,8 @@ pipeline{
         String result= '0.0.0';
     }
     
-    /*stages{
-        stage ('OWASP Dependency-Check Vulnerabilities') {
+    stages{
+        /*stage ('OWASP Dependency-Check Vulnerabilities') {
       steps {
         withMaven(maven : '') {
           sh 'mvn dependency-check:check'
@@ -163,4 +163,4 @@ pipeline{
   }
 }       
   }
- }
+}
