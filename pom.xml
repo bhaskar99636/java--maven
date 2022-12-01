@@ -78,9 +78,9 @@
 <plugin>
     <groupId>org.owasp</groupId>
     <artifactId>dependency-check-maven</artifactId>
-    <configuration>
+    <configuration> -->
         <!-- Never fail the build for this module but still check for vulnerabilities. -->
-        <failBuildOnCVSS>11</failBuildOnCVSS>
+         <!-- <failBuildOnCVSS>11</failBuildOnCVSS>
     </configuration>
 </plugin> -->
             <plugin>
