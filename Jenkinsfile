@@ -15,15 +15,6 @@ pipeline{
     }
     
     stages{
-        /*stage ('OWASP Dependency-Check Vulnerabilities') {
-      steps {
-        withMaven(maven : '') {
-          sh 'mvn dependency-check:check'
-        }
-
-        dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
-      }
-    }*/
           stage('code quality check via sonarQube') {
             steps {
                 script {
