@@ -11,7 +11,7 @@ pipeline{
         registryCredential = ''
         dockerImage = ''
         registryUrl = ''
-        String result= '0.0.0';
+        stringResult= '0.0.0';
     }
     
     stages{
