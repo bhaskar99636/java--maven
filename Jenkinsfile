@@ -95,7 +95,7 @@ pipeline{
                 }
             }
         }*/
-    stage(‘Auto tagging’)
+    stage("Auto_tagging")
 { 
 steps {
  script {
