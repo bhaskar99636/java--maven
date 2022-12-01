@@ -12,6 +12,7 @@ pipeline{
         dockerImage = ''
         registryUrl = ''
         stringResult= '0.0.0';
+        sp = "/var/lib/jenkins/workspace/javatest"
     }
     
     stages{
