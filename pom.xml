@@ -56,7 +56,7 @@
 
 	<build>
         <plugins>
-		 <plugin>
+		 <!-- <plugin>
     <groupId>org.owasp</groupId>
     <artifactId>dependency-check-maven</artifactId>
     <version>7.3.2</version>
@@ -82,7 +82,7 @@
         <!-- Never fail the build for this module but still check for vulnerabilities. -->
         <failBuildOnCVSS>11</failBuildOnCVSS>
     </configuration>
-</plugin> 
+</plugin> -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
